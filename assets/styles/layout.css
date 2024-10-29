@@ -1,0 +1,84 @@
+/* Existing styles in layout.css */
+header.intro {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+    background-color: #eaeaea;
+    width: 100%;
+    transition: transform 0.8s ease;
+}
+
+.intro-text {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 3vw;
+}
+
+.line-one, .line-two {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    width: 100%;
+    padding: 10px;
+}
+
+.name-container {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    font-size: 7vw;
+    text-shadow: 2px 2px #ff0000;
+}
+
+.reduce-space::before {
+    content: '';
+    margin-right: -0.15em;
+}
+
+.reduce-space, .reduce-space-after {
+    letter-spacing: -0.15em;
+}
+
+.line-two .job {
+    font-size: 3vw;
+    font-weight: 400;
+    text-align: center;
+    white-space: pre-wrap;
+    line-height: 1.2;
+}
+
+.scroll-container {
+    height: 100vh;
+    position: relative;
+}
+
+.content {
+    position: fixed; /* Fixe le contenu à l'écran */
+    top: 50%; /* Centré verticalement */
+    left: 50%; /* Centré horizontalement */
+    transform: translate(-50%, -50%); /* Centre parfaitement */
+    padding: 20px;
+    transition: opacity 0.5s ease; /* Transition d'opacité */
+    opacity: 0; /* Commence caché */
+    pointer-events: none; /* Empêche l'interaction quand c'est caché */
+    max-width: 800px;
+    margin: auto;
+}
+
+.scrolled-down .intro {
+    transform: translateY(-100vh); /* Cache l’intro */
+}
+
+.scrolled-down .content {
+    transform: translateY(-100vh); /* Amène le contenu en haut */
+    opacity: 1;
+}

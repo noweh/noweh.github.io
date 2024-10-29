@@ -1,0 +1,73 @@
+.profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 0;
+    border: 1px solid #000;
+    box-shadow: 10px 10px 0 #333;
+    filter: grayscale(100%);
+    margin-left: 2vw;
+    margin-right: 3vw;
+    flex-shrink: 0;
+    transition: transform 0.3s ease-in-out;
+    z-index: 1;
+}
+
+.profile-image:hover {
+    transform: scale(1.2);
+    z-index: 10;
+}
+
+.keywords {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: 0.1rem;
+    color: #555;
+    text-align: center;
+}
+
+.intro-text .name, .intro-text .job, .profile-image, .keywords {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.intro-text.active .name, .intro-text.active .job, .intro-text.active .profile-image, .intro-text.active .keywords {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.line-one .name { animation-delay: 0.7s; }
+.profile-image { animation-delay: 1.4s; }
+.line-two .job, .line-two .name { animation-delay: 2.1s; }
+.keywords { animation-delay: 2.8s; }
+
+#projects, footer {
+    padding: 15px;
+    border: 1px solid #000;
+    margin: 10px;
+    text-align: center;
+}
+
+/* Footer */
+footer {
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.arrow-down {
+    position: absolute;
+    bottom: 20px; /* Positionner la flèche en bas */
+    font-size: 2rem;
+    color: #000;
+    border: 5px solid #000;
+    padding: 10px;
+    box-shadow: 10px 10px 0 #333;
+    display: inline-block;
+    transform: rotate(45deg);
+    width: 20px;
+    height: 20px;
+    border-left: none;
+    border-top: none;
+    animation: bounce 1s infinite;
+}

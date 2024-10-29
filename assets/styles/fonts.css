@@ -1,0 +1,23 @@
+@font-face {
+    font-family: 'ITC Avant Garde Std';
+    src: url('../fonts/ITCAvantGardeStd-Demi.woff2') format('woff2'),
+    url('../fonts/ITCAvantGardeStd-Demi.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ITC Avant Garde Std';
+    src: url('../fonts/ITCAvantGardeStd-Bold.woff2') format('woff2'),
+    url('../fonts/ITCAvantGardeStd-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ITC Avant Garde Std';
+    src: url('../fonts/ITCAvantGardeStd-BoldObl.woff2') format('woff2'),
+    url('../fonts/ITCAvantGardeStd-BoldObl.woff') format('woff');
+    font-weight: 700;
+    font-style: italic;
+}
