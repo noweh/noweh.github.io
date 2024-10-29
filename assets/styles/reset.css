@@ -28,3 +28,36 @@ a {
 a:hover {
     color: red;
 }
+
+.button {
+    text-decoration: none;
+    color: #fff;
+    background-color: #ff0000;
+    padding: 10px 15px;
+    font-weight: bold;
+    display: inline-block;
+    transition: all 0.3s ease;
+    box-shadow: -3px -3px 0 #000;
+}
+
+.button:hover {
+    background-color: #000;
+    color: #fff;
+    box-shadow: -5px -5px 0 #ff0000;
+}
+
+a.button::after {
+    clear: both;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+h2 {
+    font-size: 5vw;
+    text-shadow: 2px 2px #ff0000;
+    margin: 20px 0;
+}

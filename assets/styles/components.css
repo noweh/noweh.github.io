@@ -42,7 +42,7 @@
 .line-two .job, .line-two .name { animation-delay: 2.1s; }
 .keywords { animation-delay: 2.8s; }
 
-#projects, footer {
+footer {
     padding: 15px;
     border: 1px solid #000;
     margin: 10px;
@@ -51,8 +51,10 @@
 
 /* Footer */
 footer {
-    font-size: 0.9rem;
-    color: #333;
+    padding: 20px;
+    text-align: center;
+    font-size: 0.9em;
+    color: #000;
 }
 
 .arrow-down {

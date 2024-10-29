@@ -24,47 +24,93 @@
             <div class="keywords">
                 Laravel • Redis • Data • PHP • API
             </div>
-            <div class="arrow-down"></div>
         </div>
     </header>
 
     <div class="content">
         <section id="projects">
-            <h2>Projets</h2>
-            <section class="project">
-                <h3>Flappy-man</h3>
-                <p>
-                    Flappy-man is a fun and challenging game inspired by the classic Flappy Bird, but with a twist:
-                    it’s entirely built in PHP and designed to run in a Linux command-line terminal using ASCII characters.
-                </p>
-                <!--<img src="assets/images/projects/flappy-man-run.gif" alt="GIF de Flappy-man" class="projet-image">-->
-                <div>
-                    <a href="https://github.com/noweh/flappy-man" target="_blank" class="button">Voir le projet</a>
+            <h2 class="projects-title">Projects</h2>
+            <div class="carousel">
+                <button class="carousel-nav prev" onclick="prevPage()"></button>
+                <div class="carousel-inner">
+                    <div class="projects-page">
+                        <section class="project">
+                            <h3>Flappy-man</h3>
+                            <p>
+                                Flappy-man is a fun and challenging game inspired by the classic Flappy Bird, entirely built in PHP and designed to run in a command-line terminal.
+                            </p>
+                            <img src="assets/images/projects/flappy-man-run.gif" alt="GIF de Flappy-man" class="projet-image">
+                            <div>
+                                <a href="https://github.com/noweh/flappy-man" target="_blank" class="button">See the project</a>
+                            </div>
+                        </section>
+                        <section class="project">
+                            <h3>L'Eco-memo</h3>
+                            <p>
+                                L'Eco-Memo is a memory game designed to showcase different products created during workshops with Eco-Actitude.
+                            </p>
+                            <img src="assets/images/projects/memory-game.gif" alt="GIF de l'Eco-memo" class="projet-image">
+                            <div>
+                                <a href="https://github.com/ecoactitude/ecoactitude-memory-game" target="_blank" class="button">See the project</a>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="projects-page">
+                        <section class="project">
+                            <h3>Projet 3</h3>
+                            <p>Description du projet, technologies utilisées, liens, etc.</p>
+                            <img src="assets/images/projects/flappy-man-run.gif" alt="GIF de Flappy-man" class="projet-image">
+                            <div>
+                                <a href="https://github.com/noweh/flappy-man" target="_blank" class="button">See the project</a>
+                            </div>
+                        </section>
+                        <section class="project">
+                            <h3>Projet 3</h3>
+                            <p>Description du projet, technologies utilisées, liens, etc.</p>
+                            <img src="assets/images/projects/flappy-man-run.gif" alt="GIF de Flappy-man" class="projet-image">
+                            <div>
+                                <a href="https://github.com/noweh/flappy-man" target="_blank" class="button">See the project</a>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="projects-page">
+                        <section class="project">
+                            <h3>Projet 3</h3>
+                            <p>Description du projet, technologies utilisées, liens, etc.</p>
+                            <img src="assets/images/projects/flappy-man-run.gif" alt="GIF de Flappy-man" class="projet-image">
+                            <div>
+                                <a href="https://github.com/noweh/flappy-man" target="_blank" class="button">See the project</a>
+                            </div>
+                        </section>
+                        <section class="project">
+                            <h3>Projet 3</h3>
+                            <p>Description du projet, technologies utilisées, liens, etc.</p>
+                            <img src="assets/images/projects/flappy-man-run.gif" alt="GIF de Flappy-man" class="projet-image">
+                            <div>
+                                <a href="https://github.com/noweh/flappy-man" target="_blank" class="button">See the project</a>
+                            </div>
+                        </section>
+                    </div>
                 </div>
-            </section>
-            <section class="project">
-                <h3>L'Eco-memo</h3>
-                <p>
-                    L'Eco-Memo is a memory game designed to showcase different products created during workshops with Eco-Actitude.
-                </p>
-                <!--<img src="assets/images/projects/memory-game.gif" alt="GIF de l'Eco-memo" class="projet-image">-->
-                <div>
-                    <a href="https://github.com/ecoactitude/ecoactitude-memory-game" target="_blank" class="button">Voir le projet</a>
-                </div>
-            </section>
-            <section class="project">
-                <h3>Projet 3</h3>
-                <p>Description du projet, technologies utilisées, liens, etc.</p>
-            </section>
-            <section class="project">
-                <h3>Projet 4</h3>
-                <p>Description du projet, technologies utilisées, liens, etc.</p>
-            </section>
-            <footer>
-                <p>Contact : email@example.com</p>
-            </footer>
+                <button class="carousel-nav next" onclick="nextPage()"></button>
+            </div>
+        </section>
+        <section class="social">
+            <h2 class="follow-me-title">Follow me</h2>
+            <div class="social-links">
+                <a href="" target="_blank" class="social-link">
+                    <img src="assets/images/icons/github.svg" alt="GitHub" class="social-icon">
+                </a>
+                <a href="" target="_blank" class="social-link">
+                    <img src="assets/images/icons/linkedin.svg" alt="LinkedIn" class="social-icon">
+                </a>
+                <a href="" target="_blank" class="social-link">
+                    <img src="assets/images/icons/twitter.svg" alt="Twitter" class="social-icon">
+                </a>
+            </div>
         </section>
     </div>
+    <div class="arrow-down"></div>
 </body>
 <script src="assets/script.js" defer></script>
 </html>
