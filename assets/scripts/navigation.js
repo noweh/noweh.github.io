@@ -35,9 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const maxScrollHeight = totalIntroHeight + extraScrollSpace; // Hauteur totale plus espace supplémentaire
 
     // Fonction pour gérer le scroll
-    const onScroll = (event) => {
-        const scrollAmount = event.deltaY;
-
+    const onScroll = (scrollAmount) => {
         // Calcule la nouvelle position de défilement
         lastScrollY += scrollAmount;
 
@@ -89,10 +87,36 @@ document.addEventListener('DOMContentLoaded', () => {
         event.preventDefault();
         if (!ticking) {
             window.requestAnimationFrame(() => {
-                onScroll(event);
+                onScroll(event.deltaY);
                 ticking = false;
             });
             ticking = true;
         }
     }, { passive: false });
+
+    // Variables pour le suivi des touch events
+    let touchStartY = 0;
+    let touchEndY = 0;
+
+    // Écoutez les événements de touch
+    document.addEventListener('touchstart', (event) => {
+        touchStartY = event.touches[0].clientY;
+    });
+
+    document.addEventListener('touchmove', (event) => {
+        touchEndY = event.touches[0].clientY;
+        const scrollAmount = touchStartY - touchEndY;
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                onScroll(scrollAmount);
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+
+    document.addEventListener('touchend', () => {
+        touchStartY = 0;
+        touchEndY = 0;
+    });
 });
