@@ -39,12 +39,6 @@ header.intro {
     text-shadow: 2px 2px #ff0000;
 }
 
-@media (max-width: 768px) {
-    .name-container {
-        font-size: 8vw;
-    }
-}
-
 .reduce-space::before {
     content: '';
     margin-right: -0.15em;
@@ -63,8 +57,22 @@ header.intro {
 }
 
 @media (max-width: 768px) {
+    .intro {
+        transform: translateY(-40px);
+    }
+    .name-container {
+        font-size: 9vw;
+    }
+
+    .line-one .name-container {
+        padding-left: 100px;
+    }
     .line-two .job {
+        padding-left: 110px;
         font-size: 4vw;
+    }
+    .line-two .name-container {
+        padding-right: 80px;
     }
 }
 
@@ -83,6 +91,7 @@ header.intro {
     opacity: 0; /* Commence caché */
     pointer-events: none; /* Empêche l'interaction quand c'est caché */
     margin: auto;
+    margin-top: -5vh;
     width: 80%;
     z-index: 1;
 }
@@ -231,7 +240,7 @@ header.intro {
     border: 2px dashed #000;
 }
 
-.projet-image {
+.project-image {
     max-width: 100%;  /* L'image ne dépassera pas la largeur du conteneur */
     height: auto;      /* Garde les proportions de l'image */
     display: block;    /* Évite les espaces sous l'image */

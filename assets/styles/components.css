@@ -12,6 +12,15 @@
     z-index: 1;
 }
 
+@media (max-width: 768px) {
+    .profile-image {
+        width: 150px;
+        height: 150px;
+        margin-right: 110px;
+    }
+
+}
+
 .profile-image:hover {
     transform: scale(1.2);
     z-index: 10;
