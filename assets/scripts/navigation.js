@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let ticking = false;
     const content = document.querySelector('.content');
     const introText = document.querySelector('.intro-text');
-    const introElements = Array.from(document.querySelectorAll('.intro-text .name, .intro-text .job, .profile-image, .keywords'));
+    const introElements = Array.from(document.querySelectorAll('.intro-text .name, .intro-text .job, .profile-image, .keywords, .socials'));
     const arrowDown = document.querySelector('.arrow-down');
 
     // Masque le contenu au départ
