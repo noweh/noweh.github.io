@@ -245,6 +245,7 @@ header.intro {
     display: block;
     margin: 20px auto 0;
     max-height: 20vh;
+    background-color: #fff;
 }
 
 .scrolled-down .intro {
