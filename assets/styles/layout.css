@@ -244,7 +244,7 @@ header.intro {
     max-width: 100%;  /* L'image ne dépassera pas la largeur du conteneur */
     height: auto;      /* Garde les proportions de l'image */
     display: block;    /* Évite les espaces sous l'image */
-    margin: 20px auto;    /* Centre l'image */
+    margin: 20px auto 0;    /* Centre l'image */
     max-height: 20vh; /* Limite la hauteur */
 }
 
