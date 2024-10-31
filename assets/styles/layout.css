@@ -82,16 +82,15 @@ header.intro {
 }
 
 .content {
-    position: fixed; /* Fixe le contenu à l'écran */
-    top: 50%; /* Centré verticalement */
-    left: 50%; /* Centré horizontalement */
-    transform: translate(-50%, -50%); /* Centre parfaitement */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     padding: 20px;
-    transition: opacity 0.5s ease; /* Transition d'opacité */
-    opacity: 0; /* Commence caché */
-    pointer-events: none; /* Empêche l'interaction quand c'est caché */
-    margin: auto;
-    margin-top: -5vh;
+    transition: opacity 0.5s ease;
+    opacity: 0;
+    pointer-events: none;
+    margin: -5vh auto auto;
     width: 80%;
     z-index: 1;
 }
@@ -132,28 +131,28 @@ header.intro {
 
 .carousel-nav {
     position: absolute;
-    top: 50%; /* Centre verticalement */
-    transform: translateY(-50%); /* Ajuste le positionnement */
-    background: none; /* Pas de fond */
-    border: none; /* Pas de bordure */
-    cursor: pointer; /* Curseur pointeur */
-    font-size: 2em; /* Taille des flèches */
-    color: #000; /* Couleur par défaut */
-    transition: color 0.3s; /* Transition pour la couleur */
-    z-index: 10; /* Assure que les boutons sont au-dessus des autres éléments */
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 2em;
+    color: #000;
+    transition: color 0.3s;
+    z-index: 10;
 }
 
 .carousel-nav.prev {
-    left: 10px; /* Distance depuis le bord gauche */
+    left: 10px;
 }
 
 .carousel-nav.next {
-    right: 10px; /* Distance depuis le bord droit */
+    right: 10px;
 }
 
 @media (max-width: 768px) {
     .carousel-nav.prev {
-        left: -30px; /* Déplace la flèche plus à gauche */
+        left: -30px;
     }
     .carousel-nav.next {
         right: -40px; /* Move the arrow further to the right */
@@ -241,18 +240,18 @@ header.intro {
 }
 
 .project-image {
-    max-width: 100%;  /* L'image ne dépassera pas la largeur du conteneur */
-    height: auto;      /* Garde les proportions de l'image */
-    display: block;    /* Évite les espaces sous l'image */
-    margin: 20px auto 0;    /* Centre l'image */
-    max-height: 20vh; /* Limite la hauteur */
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto 0;
+    max-height: 20vh;
 }
 
 .scrolled-down .intro {
-    transform: translateY(-100vh); /* Cache l’intro */
+    transform: translateY(-100vh);
 }
 
 .scrolled-down .content {
-    transform: translateY(-100vh); /* Amène le contenu en haut */
+    transform: translateY(-100vh);
     opacity: 1;
 }

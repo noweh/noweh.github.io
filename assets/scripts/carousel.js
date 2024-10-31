@@ -4,22 +4,22 @@ document.addEventListener("DOMContentLoaded", function() {
     const nextButton = document.querySelector(".carousel-nav.next");
 
     let currentPage = 0;
-    let projectsPerPage = window.innerWidth > 768 ? 2 : 1; // Par défaut
+    let projectsPerPage = window.innerWidth > 768 ? 2 : 1; // Default
 
-    // Fonction pour ajuster le nombre de projets visibles selon la taille de l'écran
+    // Function to adjust the number of visible projects according to screen size
     function updateProjectsPerPage() {
         projectsPerPage = window.innerWidth > 768 ? 2 : 1;
         displayProjects();
     }
 
-    // Afficher les projets selon le nombre de projets par page
+    // Display projects according to the number of projects per page
     function displayProjects() {
         projectsPages.forEach((page, index) => {
             page.style.display = (index >= currentPage && index < currentPage + projectsPerPage) ? "flex" : "none";
         });
     }
 
-    // Fonction de navigation pour afficher les projets suivants/précédents
+    // Navigation function to display the next/previous projects
     function navigateCarousel(direction) {
         const maxPage = projectsPages.length - projectsPerPage;
 
@@ -34,13 +34,13 @@ document.addEventListener("DOMContentLoaded", function() {
         displayProjects();
     }
 
-    // Écouter les clics des boutons de navigation
+    // Listen to navigation button clicks
     prevButton.addEventListener("click", () => navigateCarousel(-1));
     nextButton.addEventListener("click", () => navigateCarousel(1));
 
-    // Réinitialiser l'affichage quand la fenêtre est redimensionnée
+    // Reset the display when the window is resized
     window.addEventListener("resize", updateProjectsPerPage);
 
-    // Initialisation
+    // Initialization
     displayProjects();
 });

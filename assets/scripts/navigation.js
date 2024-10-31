@@ -6,43 +6,43 @@ document.addEventListener('DOMContentLoaded', () => {
     const introElements = Array.from(document.querySelectorAll('.intro-text .name, .intro-text .job, .profile-image, .keywords, .socials'));
     const arrowDown = document.querySelector('.arrow-down');
 
-    // Masque le contenu au départ
+    // Hide content initially
     content.style.opacity = 0;
-    content.style.pointerEvents = 'none'; // Empêche l'interaction au départ
-    arrowDown.style.opacity = 1; // Affiche la flèche au départ
+    content.style.pointerEvents = 'none'; // Prevent interaction initially
+    arrowDown.style.opacity = 1; // Show the arrow initially
 
-    // Fonction pour faire apparaître les éléments un par un
+    // Function to show elements one by one
     const showElements = () => {
         introElements.forEach((element, index) => {
             setTimeout(() => {
-                element.style.opacity = 1; // Affiche l'élément
-                element.style.transform = 'scale(1)'; // Réinitialise le scale
-            }, index * 300); // Délai de 300ms entre chaque élément
+                element.style.opacity = 1; // Show the element
+                element.style.transform = 'scale(1)'; // Reset the scale
+            }, index * 700); // 1s delay between each element
         });
     };
 
-    // Lancer l'affichage des éléments
+    // Start showing elements
     showElements();
 
-    // Ajouter la classe active après que tous les éléments aient été affichés
+    // Add the active class after all elements have been shown
     setTimeout(() => {
         introText.classList.add('active');
     }, introElements.length * 300 + 500);
 
-    // Calcule la hauteur totale des éléments d'introduction
+    // Calculate the total height of the intro elements
     const totalIntroHeight = introElements.reduce((total, element) => total + element.offsetHeight, 0);
-    const extraScrollSpace = window.innerHeight * 0.5; // Ajout de 50% de la hauteur de la fenêtre comme espace supplémentaire
-    const maxScrollHeight = totalIntroHeight + extraScrollSpace; // Hauteur totale plus espace supplémentaire
+    const extraScrollSpace = window.innerHeight * 0.5; // Add 50% of the window height as extra space
+    const maxScrollHeight = totalIntroHeight + extraScrollSpace; // Total height plus extra space
 
-    // Fonction pour gérer le scroll
+    // Function to handle scrolling
     const onScroll = (scrollAmount) => {
-        // Calcule la nouvelle position de défilement
+        // Calculate the new scroll position
         lastScrollY += scrollAmount;
 
-        // S'assure que lastScrollY ne devient pas négatif et ne dépasse pas la hauteur totale
+        // Ensure lastScrollY does not become negative and does not exceed the total height
         lastScrollY = Math.max(0, Math.min(lastScrollY, maxScrollHeight));
 
-        // Ajuste l'opacité des éléments de l'intro
+        // Adjust the opacity of the intro elements
         introElements.forEach((element, index) => {
             const fadeStart = (introElements.length - 1 - index) * (window.innerHeight / introElements.length);
             const fadeEnd = (introElements.length - index) * (window.innerHeight / introElements.length);
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 opacity = 0;
             }
 
-            // Réapparition en scrollant vers le haut
+            // Reappear when scrolling up
             if (lastScrollY < fadeEnd && lastScrollY > fadeStart) {
                 opacity = (fadeEnd - lastScrollY) / (fadeEnd - fadeStart);
             }
@@ -63,26 +63,26 @@ document.addEventListener('DOMContentLoaded', () => {
             element.style.opacity = Math.max(opacity, 0);
         });
 
-        // Vérifiez si le premier élément est caché pour faire disparaître la flèche
+        // Check if the first element is hidden to make the arrow disappear
         const firstElement = introElements[0];
         const firstElementOpacity = getComputedStyle(firstElement).opacity;
 
-        arrowDown.style.opacity = firstElementOpacity; // La flèche disparaît avec le premier élément
+        arrowDown.style.opacity = firstElementOpacity; // The arrow disappears with the first element
 
-        // Utiliser requestAnimationFrame pour vérifier l'opacité après l'application des styles
+        // Use requestAnimationFrame to check opacity after applying styles
         requestAnimationFrame(() => {
             const allElementsHidden = introElements.every(element => parseFloat(getComputedStyle(element).opacity) === 0);
-            if (allElementsHidden) { // Cache le contenu un peu avant
-                content.style.opacity = 1; // Montre le contenu
-                content.style.pointerEvents = 'auto'; // Permet l'interaction
+            if (allElementsHidden) { // Hide the content a bit earlier
+                content.style.opacity = 1; // Show the content
+                content.style.pointerEvents = 'auto'; // Allow interaction
             } else {
-                content.style.opacity = 0; // Cache le contenu
-                content.style.pointerEvents = 'none'; // Empêche l'interaction
+                content.style.opacity = 0; // Hide the content
+                content.style.pointerEvents = 'none'; // Prevent interaction
             }
         });
     };
 
-    // Écoutez l'événement de défilement
+    // Listen to the scroll event
     document.addEventListener('wheel', (event) => {
         event.preventDefault();
         if (!ticking) {
@@ -94,11 +94,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, { passive: false });
 
-    // Variables pour le suivi des touch events
+    // Variables to track touch events
     let touchStartY = 0;
     let touchEndY = 0;
 
-    // Écoutez les événements de touch
+    // Listen to touch events
     document.addEventListener('touchstart', (event) => {
         touchStartY = event.touches[0].clientY;
     });

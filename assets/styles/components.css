@@ -98,7 +98,7 @@ footer {
 
 .arrow-down {
     position: absolute;
-    bottom: 20px; /* Positionner la flèche en bas */
+    bottom: 20px;
     font-size: 2rem;
     color: #000;
     border: 5px solid #000;
@@ -113,7 +113,6 @@ footer {
     animation: bounce 1s infinite;
 }
 
-/* Texte décalé et couleur brut */
 .project.brutalist-glitch p {
     font-size: 1rem;
     line-height: 1.5;
@@ -123,7 +122,6 @@ footer {
     animation: glitch-animation 1s infinite alternate;
 }
 
-/* Animation glitch sur certains mots */
 .project.brutalist-glitch .glitch {
     display: inline-block;
     color: #ff0055;
@@ -131,7 +129,6 @@ footer {
     animation: glitch-shift 0.8s infinite alternate-reverse;
 }
 
-/* Glitch sur les mots avec décalage aléatoire */
 @keyframes glitch-animation {
     0% { color: #000; transform: translate(0px, 0px); }
     40% { color: #ff0055; transform: translate(2px, -1px); }
@@ -139,4 +136,11 @@ footer {
     100% { color: #111; transform: translate(0px, 0px); }
 }
 
-@keyfram
+@keyframes glitch-shift {
+    0% { transform: translate(0, 0); }
+    20% { transform: translate(-1px, -1px); }
+    40% { transform: translate(2px, 1px); }
+    60% { transform: translate(-1px, 2px); }
+    80% { transform: translate(1px, -1px); }
+    100% { transform: translate(0, 0); }
+}
