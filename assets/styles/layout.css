@@ -5,7 +5,7 @@ header.intro {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: clamp(20px, 3vw, 40px);
   text-align: center;
   background-color: #eaeaea;
   width: 100%;
@@ -15,11 +15,11 @@ header.intro {
 .intro-text {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: clamp(10px, 2vw, 20px);
   align-items: center;
   font-weight: bold;
   text-transform: uppercase;
-  font-size: 3vw;
+  font-size: clamp(1.2rem, 3vw, 2rem);
 }
 
 .line-one,
@@ -27,16 +27,16 @@ header.intro {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 40px;
+  gap: clamp(20px, 4vw, 40px);
   width: 100%;
-  padding: 10px;
+  padding: clamp(5px, 1vw, 10px);
 }
 
 .name-container {
   display: flex;
   justify-content: center;
   flex-grow: 1;
-  font-size: 7vw;
+  font-size: clamp(2rem, 7vw, 4rem);
   text-shadow: 2px 2px #ff0000;
 }
 
@@ -51,7 +51,7 @@ header.intro {
 }
 
 .line-two .job {
-  font-size: 3vw;
+  font-size: clamp(1rem, 3vw, 2rem);
   font-weight: 400;
   text-align: center;
   white-space: pre-wrap;
@@ -60,7 +60,7 @@ header.intro {
 
 @media (max-width: 768px) {
   .intro {
-    padding: 20px 40px;
+    padding: clamp(10px, 3vw, 20px);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -70,7 +70,7 @@ header.intro {
   .line-one {
     display: flex;
     padding: 0;
-    margin-bottom: 20px;
+    margin-bottom: clamp(10px, 2vw, 20px);
     width: 100%;
     align-items: center;
     flex-direction: row;
@@ -102,30 +102,31 @@ header.intro {
 
 @media (max-width: 480px) {
   .intro-text {
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 1.2rem, 1.5rem);
   }
 
   .name-container {
-    font-size: 1.4rem;
+    font-size: clamp(1.2rem, 1.4rem, 1.6rem);
   }
 
   .line-two .name-container {
-    font-size: 1.4rem;
+    font-size: clamp(1.2rem, 1.4rem, 1.6rem);
   }
 
   .line-two .job {
-    font-size: 0.9rem;
+    font-size: clamp(0.8rem, 0.9rem, 1rem);
   }
 
   .profile-image {
-    width: 100px;
-    height: 100px;
+    width: clamp(80px, 100px, 120px);
+    height: clamp(80px, 100px, 120px);
   }
 }
 
 .scroll-container {
   height: 100vh;
   position: relative;
+  overflow: hidden;
 }
 
 .content {
@@ -133,12 +134,13 @@ header.intro {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 20px;
+  padding: clamp(10px, 2vw, 20px);
   transition: opacity 0.5s ease;
   opacity: 0;
   pointer-events: none;
   margin: -5vh auto auto;
-  width: 80%;
+  width: clamp(80%, 90%, 95%);
+  max-width: 1200px;
   z-index: 1;
 }
 
@@ -146,18 +148,26 @@ header.intro {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: clamp(10px, 2vw, 20px);
 }
 
 .projects-title,
 .follow-me-title {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: clamp(10px, 2vw, 20px);
   width: 100%;
+  font-size: clamp(1.5rem, 3vw, 2rem);
 }
 
 .carousel {
   position: relative;
   width: 100%;
+  outline: none;
+}
+
+.carousel:focus-visible {
+  outline: 3px solid #000;
+  outline-offset: 4px;
 }
 
 .carousel-inner {
@@ -165,7 +175,7 @@ header.intro {
   transition: transform 0.5s ease;
   width: 100%;
   margin-left: auto;
-  margin-right: 20px;
+  margin-right: clamp(10px, 2vw, 20px);
   justify-content: center;
 }
 
@@ -175,69 +185,60 @@ header.intro {
   top: 50%;
   transform: translateY(-50%);
   z-index: 10;
-}
-
-.carousel-nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 2em;
+  font-size: clamp(1.5rem, 3vw, 2rem);
   color: #000;
   transition: color 0.3s;
-  z-index: 10;
+  padding: clamp(5px, 1vw, 10px);
+}
+
+.carousel-nav:focus-visible {
+  outline: 3px solid #000;
+  outline-offset: 4px;
 }
 
 .carousel-nav.prev {
-  left: 10px;
+  left: clamp(-40px, -5vw, -20px);
 }
 
 .carousel-nav.next {
-  right: 10px;
-}
-
-@media (max-width: 768px) {
-  .carousel-nav.prev {
-    left: -20px;
-  }
-  .carousel-nav.next {
-    right: -20px;
-  }
+  right: clamp(-40px, -5vw, -20px);
 }
 
 .carousel-nav::before {
-  content: ""; /* Create an arrow using the pseudo-element */
-  display: block; /* Display the pseudo-element as a block */
-  width: 0; /* Width 0 for the triangle */
-  height: 0; /* Height 0 for the triangle */
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
   border-style: solid;
 }
 
 .carousel-nav.prev::before {
-  border-width: 25px 30px 25px 0; /* Increase the size of the left arrow */
-  border-color: transparent #000 transparent transparent; /* Color for the left arrow */
+  border-width: clamp(15px, 3vw, 25px) clamp(20px, 4vw, 30px)
+    clamp(15px, 3vw, 25px) 0;
+  border-color: transparent #000 transparent transparent;
 }
 
 .carousel-nav.next::before {
-  border-width: 25px 0 25px 30px; /* Increase the size of the right arrow */
-  border-color: transparent transparent transparent #000; /* Color for the right arrow */
+  border-width: clamp(15px, 3vw, 25px) 0 clamp(15px, 3vw, 25px)
+    clamp(20px, 4vw, 30px);
+  border-color: transparent transparent transparent #000;
 }
 
-/* Adjust hover effect */
 .carousel-nav.prev:hover::before {
-  border-color: transparent #ff0000 transparent transparent; /* Change color on hover for left arrow */
+  border-color: transparent #ff0000 transparent transparent;
 }
 
 .carousel-nav.next:hover::before {
-  border-color: transparent transparent transparent #ff0000; /* Change color on hover for right arrow */
+  border-color: transparent transparent transparent #ff0000;
 }
 
 .projects-page {
   max-width: 100%;
-  gap: 20px;
-  margin-left: clamp(20px, 5vw, 40px);
+  gap: clamp(10px, 2vw, 20px);
+  margin-left: clamp(10px, 3vw, 20px);
   display: none;
 }
 
@@ -250,17 +251,21 @@ header.intro {
 .project {
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Distribute space between elements */
+  justify-content: space-between;
   align-items: center;
   position: relative;
-  padding: 20px;
-  margin: 0 20px;
+  padding: clamp(15px, 2vw, 20px);
+  margin: clamp(5px, 1vw, 10px);
   background-color: #fafafa;
   box-shadow: 10px 10px 0 #ff0000, -5px -5px 0 #000;
   transition: transform 0.3s ease;
-  width: 100%;
-  max-width: 400px;
+  width: clamp(280px, 30vw, 400px);
   text-align: center;
+}
+
+.project:focus-visible {
+  outline: 3px solid #000;
+  outline-offset: 4px;
 }
 
 .project:hover {
@@ -268,22 +273,23 @@ header.intro {
 }
 
 .project h3 {
-  font-size: 1.5em;
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
   font-weight: bold;
   color: #000;
   padding-bottom: 5px;
   border-bottom: 2px solid #000;
   text-transform: uppercase;
   letter-spacing: 2px;
+  margin-bottom: clamp(5px, 1vw, 10px);
 }
 
 .project p {
-  font-size: 0.95em;
-  line-height: 1.4em;
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
+  line-height: 1.4;
   margin-top: 10px;
   color: #333;
   background: #fff;
-  padding: 10px;
+  padding: clamp(8px, 1.5vw, 10px);
   border: 2px dashed #000;
 }
 
@@ -291,18 +297,19 @@ header.intro {
   max-width: 100%;
   height: auto;
   display: block;
-  margin: 20px auto 0;
+  margin: clamp(10px, 2vw, 20px) auto 0;
   max-height: 20vh;
   background-color: #fff;
+  border: 2px solid #000;
 }
 
 .scrolled-down .intro {
-  transform: translateY(-100vh);
+  transform: translateY(-100%);
 }
 
 .scrolled-down .content {
-  transform: translateY(-100vh);
   opacity: 1;
+  pointer-events: auto;
 }
 
 .profile-image {
