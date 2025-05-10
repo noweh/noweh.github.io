@@ -52,6 +52,26 @@
 .social-logo,
 .project {
   will-change: transform;
-  backface-visibility: hidden;
-  transform: translateZ(0);
+}
+
+/* Optimize animations for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .intro,
+  .content,
+  .profile-image,
+  .social-logo,
+  .project,
+  .arrow-down {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .scrolled-down .intro {
+    transform: translateY(-100vh);
+  }
+
+  .scrolled-down .content {
+    transform: translateY(-100vh);
+    opacity: 1;
+  }
 }
