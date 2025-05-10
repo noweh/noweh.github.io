@@ -38,7 +38,10 @@ document.addEventListener("DOMContentLoaded", () => {
     (total, element) => total + element.offsetHeight,
     0
   );
-  const extraScrollSpace = window.innerHeight * 0.5; // Add 50% of the window height as extra space
+  const extraScrollSpace =
+    window.innerWidth <= 768
+      ? window.innerHeight * 2
+      : window.innerHeight * 0.5;
   const maxScrollHeight = totalIntroHeight + extraScrollSpace; // Total height plus extra space
 
   // Function to handle scrolling
