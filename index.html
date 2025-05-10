@@ -1,26 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Portfolio de Julien SCHMITT - Lead Developer Backend spécialisé en Laravel, Redis et Data. Découvrez mes projets et articles techniques sur le développement backend."
+    />
+    <meta
+      name="keywords"
+      content="Julien SCHMITT, Lead Developer, Backend, Laravel, Redis, PHP, Data, Portfolio"
+    />
+    <meta name="author" content="Julien SCHMITT" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://noweh.github.io/" />
+    <meta
+      property="og:title"
+      content="Julien SCHMITT - Lead Developer Backend"
+    />
+    <meta
+      property="og:description"
+      content="Portfolio de Julien SCHMITT - Lead Developer Backend spécialisé en Laravel, Redis et Data."
+    />
+    <meta property="og:image" content="assets/images/photo_profil.jpg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://noweh.github.io/" />
+    <meta
+      property="twitter:title"
+      content="Julien SCHMITT - Lead Developer Backend"
+    />
+    <meta
+      property="twitter:description"
+      content="Portfolio de Julien SCHMITT - Lead Developer Backend spécialisé en Laravel, Redis et Data."
+    />
+    <meta property="twitter:image" content="assets/images/photo_profil.jpg" />
+
     <title>Julien SCHMITT - Lead Developer Backend</title>
     <link rel="stylesheet" href="assets/styles/main.css" />
     <link rel="preload" as="image" href="assets/images/photo_profil.jpg" />
     <link rel="preload" as="image" href="assets/images/linkedin_icon.png" />
     <link rel="preload" as="image" href="assets/images/github_icon.png" />
+    <link rel="icon" type="image/png" href="assets/images/favicon.png" />
   </head>
   <body>
     <header class="intro">
       <div class="intro-text">
         <div class="line-one">
           <div class="name-container">
-            <span class="name"
-              >SCHMI<span class="reduce-space-after">1</span>T</span
-            >
+            <h1 class="name">
+              SCHMI<span class="reduce-space-after">1</span>T
+            </h1>
           </div>
           <img
             src="assets/images/photo_profil.jpg"
-            alt="Image de profil"
+            alt="Photo de profil de Julien SCHMITT"
             class="profile-image"
             loading="eager"
           />
@@ -28,11 +65,11 @@
         <div class="line-two">
           <span class="job">Lead Devel0per<br />Backend</span>
           <div class="name-container">
-            <span class="name">JUL<span class="reduce-space">1</span>EN</span>
+            <h2 class="name">JUL<span class="reduce-space">1</span>EN</h2>
           </div>
         </div>
         <div class="keywords">Laravel • Redis • Data</div>
-        <div class="socials">
+        <nav class="socials" aria-label="Réseaux sociaux">
           <a
             href="https://www.linkedin.com/in/julien-schmitt-backend-developer/"
             target="_blank"
@@ -63,13 +100,13 @@
               loading="eager"
             />
           </a>
-        </div>
+        </nav>
       </div>
     </header>
 
-    <div class="content">
-      <section class="projects">
-        <h2 class="projects-title">Projects</h2>
+    <main class="content">
+      <section class="projects" aria-labelledby="projects-title">
+        <h2 id="projects-title" class="projects-title">Projects</h2>
         <div class="carousel">
           <button
             class="carousel-nav prev"
@@ -274,8 +311,8 @@
           ></button>
         </div>
       </section>
-    </div>
-    <div class="arrow-down"></div>
+    </main>
+    <div class="arrow-down" aria-hidden="true"></div>
   </body>
   <script src="assets/scripts/navigation.js" defer></script>
   <script src="assets/scripts/carousel.js" defer></script>
