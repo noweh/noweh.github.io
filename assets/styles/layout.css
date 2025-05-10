@@ -9,7 +9,7 @@ header.intro {
   text-align: center;
   background-color: #eaeaea;
   width: 100%;
-  transition: transform 0.8s ease;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .intro-text {
@@ -61,42 +61,28 @@ header.intro {
 @media (max-width: 768px) {
   .intro {
     padding: clamp(10px, 3vw, 20px);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
   }
 
   .line-one {
-    display: flex;
     padding: 0;
     margin-bottom: clamp(10px, 2vw, 20px);
-    width: 100%;
-    align-items: center;
-    flex-direction: row;
   }
 
   .line-two {
-    display: flex;
     padding: 0;
-    width: 100%;
-    flex-direction: row;
   }
 
   .name-container {
     font-size: clamp(1.8rem, 7vw, 2.5rem);
-    text-align: center;
   }
 
   .line-two .job {
     font-size: clamp(1rem, 4vw, 1.5rem);
-    text-align: center;
   }
 
   .profile-image {
     width: clamp(80px, 12vw, 150px);
     height: clamp(80px, 12vw, 150px);
-    margin: 0;
   }
 }
 
@@ -135,7 +121,7 @@ header.intro {
   left: 50%;
   transform: translate(-50%, -50%);
   padding: clamp(10px, 2vw, 20px);
-  transition: opacity 0.5s ease;
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   opacity: 0;
   pointer-events: none;
   margin: -5vh auto auto;
@@ -172,7 +158,7 @@ header.intro {
 
 .carousel-inner {
   display: flex;
-  transition: transform 0.5s ease;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   width: 100%;
   margin-left: auto;
   margin-right: clamp(10px, 2vw, 20px);
@@ -235,14 +221,14 @@ header.intro {
   border-color: transparent transparent transparent #ff0000;
 }
 
-.projects-page {
+.project-page {
   max-width: 100%;
   gap: clamp(10px, 2vw, 20px);
   margin-left: clamp(10px, 3vw, 20px);
   display: none;
 }
 
-.projects-page.active {
+.project-page.active {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
