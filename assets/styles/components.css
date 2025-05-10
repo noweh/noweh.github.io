@@ -1,146 +1,220 @@
 .profile-image {
-    position: relative;
-    width: 200px;
-    height: 200px;
-    border-radius: 0;
-    border: 4px solid #000;
-    box-shadow: 8px 8px 0 #f00;
-    margin-left: 2vw;
-    margin-right: 3vw;
-    flex-shrink: 0;
-    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 1;
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border-radius: 0;
+  border: 4px solid #000;
+  box-shadow: 8px 8px 0 #f00;
+  margin-left: 2vw;
+  margin-right: 3vw;
+  flex-shrink: 0;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
 }
 
 .profile-image::after {
-    content: "";
-    position: absolute;
-    top: -6px;
-    left: -6px;
-    width: 100%;
-    height: 100%;
-    border: 4px solid #000;
-    z-index: -1;
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  width: 100%;
+  height: 100%;
+  border: 4px solid #000;
+  z-index: -1;
 }
 
-
 @media (max-width: 768px) {
-    .profile-image {
-        width: 150px;
-        height: 150px;
-        margin-right: 110px;
-    }
+  .profile-image {
+    width: 150px;
+    height: 150px;
+  }
 
+  .carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 10;
+    padding: 10px;
+    margin: 0;
+  }
+
+  .carousel-nav.prev {
+    left: -40px;
+  }
+
+  .carousel-nav.next {
+    right: -40px;
+  }
 }
 
 .profile-image:hover {
-    transform: scale(1.2);
-    z-index: 10;
+  transform: scale(1.2);
+  z-index: 10;
 }
 
 .keywords {
-    margin-top: 20px;
-    font-size: 1.5rem;
-    font-weight: 400;
-    letter-spacing: 0.1rem;
-    color: #555;
-    text-align: center;
+  margin-top: 20px;
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.1rem;
+  color: #555;
+  text-align: center;
 }
 
 .socials {
-    display: flex;
-    gap: 20px;
-    font-size: 1.5rem;
+  display: flex;
+  gap: 20px;
+  font-size: 1.5rem;
 }
 
 .socials a {
-    color: #000;
-    text-decoration: none;
-    border-bottom: none;
+  color: #000;
+  text-decoration: none;
+  border-bottom: none;
 }
 
 .social-logo {
-    width: 30px;
-    height: 30px;
-    opacity: 0.7;
+  width: 30px;
+  height: 30px;
+  opacity: 0.7;
 }
 
-.intro-text .name, .intro-text .job, .profile-image, .keywords, .socials {
-    opacity: 0;
-    transform: scale(0.8);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+.intro-text .name,
+.intro-text .job,
+.profile-image,
+.keywords,
+.socials {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.intro-text.active .name, .intro-text.active .job, .intro-text.active .profile-image, .intro-text.active .keywords {
-    opacity: 1;
-    transform: scale(1);
+.intro-text.active .name,
+.intro-text.active .job,
+.intro-text.active .profile-image,
+.intro-text.active .keywords {
+  opacity: 1;
+  transform: scale(1);
 }
 
-.line-one .name { animation-delay: 1s; }
-.profile-image { animation-delay: 2s; }
-.line-two .job, .line-two .name { animation-delay: 2.5s; }
-.keywords { animation-delay: 3.5s; }
+.line-one .name {
+  animation-delay: 1s;
+}
+.profile-image {
+  animation-delay: 2s;
+}
+.line-two .job,
+.line-two .name {
+  animation-delay: 2.5s;
+}
+.keywords {
+  animation-delay: 3.5s;
+}
 
 footer {
-    padding: 15px;
-    border: 1px solid #000;
-    margin: 10px;
-    text-align: center;
+  padding: 15px;
+  border: 1px solid #000;
+  margin: 10px;
+  text-align: center;
 }
 
 /* Footer */
 footer {
-    padding: 20px;
-    text-align: center;
-    font-size: 0.9em;
-    color: #000;
+  padding: 20px;
+  text-align: center;
+  font-size: 0.9em;
+  color: #000;
 }
 
 .arrow-down {
-    position: absolute;
-    bottom: 20px;
-    font-size: 2rem;
-    color: #000;
-    border: 5px solid #000;
-    padding: 10px;
-    box-shadow: 10px 10px 0 #333;
-    display: inline-block;
-    transform: rotate(45deg);
-    width: 20px;
-    height: 20px;
-    border-left: none;
-    border-top: none;
-    animation: bounce 1s infinite;
+  position: absolute;
+  bottom: 20px;
+  font-size: 2rem;
+  color: #000;
+  border: 5px solid #000;
+  padding: 10px;
+  box-shadow: 10px 10px 0 #333;
+  display: inline-block;
+  transform: rotate(45deg);
+  width: 20px;
+  height: 20px;
+  border-left: none;
+  border-top: none;
+  animation: bounce 1s infinite;
 }
 
 .project.brutalist-glitch p {
-    font-size: 1rem;
-    line-height: 1.5;
-    color: #111;
-    text-transform: uppercase;
-    position: relative;
-    animation: glitch-animation 1s infinite alternate;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #111;
+  text-transform: uppercase;
+  position: relative;
+  animation: glitch-animation 1s infinite alternate;
 }
 
 .project.brutalist-glitch .glitch {
-    display: inline-block;
-    color: #ff0055;
-    position: relative;
-    animation: glitch-shift 0.8s infinite alternate-reverse;
+  display: inline-block;
+  color: #ff0055;
+  position: relative;
+  animation: glitch-shift 0.8s infinite alternate-reverse;
 }
 
 @keyframes glitch-animation {
-    0% { color: #000; transform: translate(0px, 0px); }
-    40% { color: #ff0055; transform: translate(2px, -1px); }
-    60% { color: #00ffff; transform: translate(-1px, -1px); }
-    100% { color: #111; transform: translate(0px, 0px); }
+  0% {
+    color: #000;
+    transform: translate(0px, 0px);
+  }
+  40% {
+    color: #ff0055;
+    transform: translate(2px, -1px);
+  }
+  60% {
+    color: #00ffff;
+    transform: translate(-1px, -1px);
+  }
+  100% {
+    color: #111;
+    transform: translate(0px, 0px);
+  }
 }
 
 @keyframes glitch-shift {
-    0% { transform: translate(0, 0); }
-    20% { transform: translate(-1px, -1px); }
-    40% { transform: translate(2px, 1px); }
-    60% { transform: translate(-1px, 2px); }
-    80% { transform: translate(1px, -1px); }
-    100% { transform: translate(0, 0); }
+  0% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(-1px, -1px);
+  }
+  40% {
+    transform: translate(2px, 1px);
+  }
+  60% {
+    transform: translate(-1px, 2px);
+  }
+  80% {
+    transform: translate(1px, -1px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.carousel {
+  outline: none !important;
+}
+
+.carousel:focus {
+  outline: none !important;
+}
+
+.carousel-nav {
+  outline: none !important;
+}
+
+.carousel-nav:focus {
+  outline: none !important;
 }
