@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   let lastScrollY = 0;
   let ticking = false;
+  let resizeTimeout;
   const content = document.querySelector(".content");
   const introText = document.querySelector(".intro-text");
   const introElements = Array.from(
@@ -12,47 +13,55 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Hide content initially
   content.style.opacity = 0;
-  content.style.pointerEvents = "none"; // Prevent interaction initially
-  arrowDown.style.opacity = 1; // Show the arrow initially
+  content.style.pointerEvents = "none";
+  arrowDown.style.opacity = 1;
+  arrowDown.setAttribute("aria-hidden", "true");
 
   // Function to show elements one by one
   const showElements = () => {
     introElements.forEach((element, index) => {
       setTimeout(() => {
-        element.style.opacity = 1; // Show the element
-        element.style.transform = "scale(1)"; // Reset the scale
-      }, index * 700); // 1s delay between each element
+        element.style.opacity = 1;
+        element.style.transform = "scale(1)";
+        element.setAttribute("aria-hidden", "false");
+      }, index * 700);
     });
   };
 
-  // Start showing elements
   showElements();
 
-  // Add the active class after all elements have been shown
   setTimeout(() => {
     introText.classList.add("active");
   }, introElements.length * 300 + 500);
 
   // Calculate the total height of the intro elements
-  const totalIntroHeight = introElements.reduce(
-    (total, element) => total + element.offsetHeight,
-    0
-  );
-  const extraScrollSpace =
-    window.innerWidth <= 768
+  const calculateHeights = () => {
+    const totalIntroHeight = introElements.reduce(
+      (total, element) => total + element.offsetHeight,
+      0
+    );
+    const isMobile = window.innerWidth <= 768;
+    const extraScrollSpace = isMobile
       ? window.innerHeight * 2
       : window.innerHeight * 0.5;
-  const maxScrollHeight = totalIntroHeight + extraScrollSpace; // Total height plus extra space
+    return totalIntroHeight + extraScrollSpace;
+  };
+
+  let maxScrollHeight = calculateHeights();
+
+  // Update heights on resize
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      maxScrollHeight = calculateHeights();
+    }, 250);
+  });
 
   // Function to handle scrolling
   const onScroll = (scrollAmount) => {
-    // Calculate the new scroll position
     lastScrollY += scrollAmount;
-
-    // Ensure lastScrollY does not become negative and does not exceed the total height
     lastScrollY = Math.max(0, Math.min(lastScrollY, maxScrollHeight));
 
-    // Adjust the opacity of the intro elements
     introElements.forEach((element, index) => {
       const fadeStart =
         (introElements.length - 1 - index) *
@@ -75,48 +84,50 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       element.style.opacity = Math.max(opacity, 0);
+      element.setAttribute("aria-hidden", opacity === 0 ? "true" : "false");
     });
 
-    // Check if the first element is hidden to make the arrow disappear
     const firstElement = introElements[0];
     const firstElementOpacity = getComputedStyle(firstElement).opacity;
 
-    arrowDown.style.opacity = firstElementOpacity; // The arrow disappears with the first element
+    arrowDown.style.opacity = firstElementOpacity;
+    arrowDown.setAttribute(
+      "aria-hidden",
+      firstElementOpacity === "0" ? "true" : "false"
+    );
 
-    // Use requestAnimationFrame to check opacity after applying styles
     requestAnimationFrame(() => {
       const allElementsHidden = introElements.every(
         (element) => parseFloat(getComputedStyle(element).opacity) === 0
       );
       if (allElementsHidden) {
-        // Hide the content a bit earlier
-        content.style.opacity = 1; // Show the content
-        content.style.pointerEvents = "auto"; // Allow interaction
+        content.style.opacity = 1;
+        content.style.pointerEvents = "auto";
+        content.setAttribute("aria-hidden", "false");
       } else {
-        content.style.opacity = 0; // Hide the content
-        content.style.pointerEvents = "none"; // Prevent interaction
+        content.style.opacity = 0;
+        content.style.pointerEvents = "none";
+        content.setAttribute("aria-hidden", "true");
       }
     });
   };
 
   // Handle wheel events
-  document.addEventListener(
-    "wheel",
-    (event) => {
-      event.preventDefault();
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          onScroll(event.deltaY);
-          ticking = false;
-        });
-        ticking = true;
-      }
-    },
-    { passive: false }
-  );
+  const handleWheel = (event) => {
+    event.preventDefault();
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        onScroll(event.deltaY);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  };
+
+  document.addEventListener("wheel", handleWheel, { passive: false });
 
   // Handle keyboard navigation
-  document.addEventListener("keydown", (event) => {
+  const handleKeydown = (event) => {
     if (
       event.key === "ArrowDown" ||
       event.key === "PageDown" ||
@@ -125,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
       event.preventDefault();
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          onScroll(window.innerHeight * 0.8); // Smooth scroll down
+          onScroll(window.innerHeight * 0.8);
           ticking = false;
         });
         ticking = true;
@@ -134,7 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
       event.preventDefault();
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          onScroll(-window.innerHeight * 0.8); // Smooth scroll up
+          onScroll(-window.innerHeight * 0.8);
           ticking = false;
         });
         ticking = true;
@@ -148,20 +159,23 @@ document.addEventListener("DOMContentLoaded", () => {
       lastScrollY = maxScrollHeight;
       onScroll(0);
     }
-  });
+  };
+
+  document.addEventListener("keydown", handleKeydown);
 
   // Variables to track touch events
   let touchStartY = 0;
   let touchEndY = 0;
 
   // Listen to touch events
-  document.addEventListener("touchstart", (event) => {
+  const handleTouchStart = (event) => {
     touchStartY = event.touches[0].clientY;
-  });
+  };
 
-  document.addEventListener("touchmove", (event) => {
+  const handleTouchMove = (event) => {
     touchEndY = event.touches[0].clientY;
     const scrollAmount = touchStartY - touchEndY;
+
     if (!ticking) {
       window.requestAnimationFrame(() => {
         onScroll(scrollAmount);
@@ -169,10 +183,27 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       ticking = true;
     }
-  });
+  };
 
-  document.addEventListener("touchend", () => {
+  const handleTouchEnd = () => {
     touchStartY = 0;
     touchEndY = 0;
-  });
+  };
+
+  document.addEventListener("touchstart", handleTouchStart, { passive: true });
+  document.addEventListener("touchmove", handleTouchMove, { passive: true });
+  document.addEventListener("touchend", handleTouchEnd, { passive: true });
+
+  // Cleanup function
+  const cleanup = () => {
+    document.removeEventListener("wheel", handleWheel);
+    document.removeEventListener("keydown", handleKeydown);
+    document.removeEventListener("touchstart", handleTouchStart);
+    document.removeEventListener("touchmove", handleTouchMove);
+    document.removeEventListener("touchend", handleTouchEnd);
+    window.removeEventListener("resize", calculateHeights);
+  };
+
+  // Cleanup on page unload
+  window.addEventListener("unload", cleanup);
 });
